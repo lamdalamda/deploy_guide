@@ -6,6 +6,30 @@
 
 # Hardware 硬件
 
+
+## e5 鸡血 @ z10pa
+
+
+烧录器装好驱动https://item.taobao.com/item.htm?spm=a1z09.2.0.0.68162e8dApTxX1&id=592580392777&_u=n1ucmpp9f1e3
+取下BIOS芯片，按照商家页面把bios芯片夹住，然后连usb。打开软件之后，先检测烧录器，然后打开鸡血bios （.cap），先擦除再写入（不知道需不需要擦除）。
+
+电脑需要拔下电池，跳线到cmos重置模式半小时以上
+
+
+刷好的bios芯片对着缺口插回去，尝试安装系统发现不可以用（卡在win10logo），于是在别的电脑上安装系统之后插回来，还是卡在了win10的logo。 重启三次之后进入安全模式选择禁用驱动程序强制签名，成功进去系统。
+
+此时电脑上面是两个cpu，4条内存，一个nvme硬盘，连接了板载显卡，没有插独显
+
+以这种方式进去系统之后，在系统里面双击win10安装程序，删除所有个人文件重装系统，安装完后系统正常工作，重启之后也正常
+
+可以参考https://www.bilibili.com/read/cv4116433
+
+之后是电源选择高性能，关闭快速启动，bios设定里面c state limie 设置成c0、c1，开启c3 report,禁用c6 report
+
+再之后，格式化一个u盘，把  v3.efi 和 start.nsh放进去，引导这个优盘，让优盘把v3 efi相当于复制进系统的efi分区即可
+
+
+
 ## zbook17 changing to DC screen 换屏幕
 
 https://forum.51nb.com/thread-1966563-1-1.html

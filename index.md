@@ -301,6 +301,8 @@ sh 运行下载好的包，安装oneapi
 `OFLAG      = -O2 -xhost`
 参考bilibili
 
+`export PATH=$PATH:/root/repo/vasp.5.4.4/bin`
+
 ### vasp cuda
 
 CUDA在makefile include里面要改
@@ -327,9 +329,7 @@ CUDA在makefile include里面要改
 
 `ulimit -s 262140` 
 
-或者更大的数
 
-`ulimit -u unlimited`
 
 
 至少需要incar poscar potcar kpoints才能运行

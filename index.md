@@ -74,6 +74,10 @@ https://bbs.luobotou.org/thread-45955-1-1.html11
 
 # windows system setting 系统设置
 
+## 开启远程桌面:
+
+文件资源管理器,右键此电脑,跳出来设置的窗口,在相关设置里面有远程桌面,点进去打开
+
 ## windows照片查看器
 
 保存成reg文件双击运行
@@ -283,11 +287,13 @@ wget https://registrationcenter-download.intel.com/akdlm/irc_nas/17764/l_HPCKit_
 sh 运行下载好的包，安装oneapi
 
 之后要source 一下，参考intel的start guide
+在.bashrc里面
+`source /opt/intel/oneapi/setvars.sh`
 
 
 **make libintel64** 如果是默认路径
 
-`cd opt\intel\oneapi\mkl\2021.3.0\interfaces\fftw3xf\ `
+`cd /opt/intel/oneapi/mkl/2021.3.0/interfaces/fftw3xf/ `
 `make libintel64`
 
 ### vasp build

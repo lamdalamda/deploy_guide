@@ -126,6 +126,10 @@ bcdedit /set hypervisorlaunchtype off
 
 ## wsl的基本设置
 
+### 双路主机：
+
+可以任务管理器右键vmmm选择让wsl运行在哪个cpu上面
+
 ### root 权限
 
  `ubuntu1804.exe config --default-user root` 
@@ -329,12 +333,11 @@ CUDA在makefile include里面要改
 
 `ulimit -s 262140` 
 
-
-
-
 至少需要incar poscar potcar kpoints才能运行
 
+### vasp other
 
+vasp6.1的GPU编译，新坑：https://zhuanlan.zhihu.com/p/302826820
 
 
 ```markdown

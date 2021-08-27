@@ -28,6 +28,29 @@
 
 再之后，格式化一个u盘，把  v3.efi 和 start.nsh放进去，引导这个优盘，让优盘把v3 efi相当于复制进系统的efi分区即可
 
+## 系统监测：
+
+千万不要用aida64，会导致功耗bug
+
+使用hwinfo
+
+
+
+## 双路设置：
+
+只在1路插内存：即32g内存都在cpu1上面，cpuz跑分15w+
+
+两路都插内存，总共64g，跑分10w
+
+开启关闭虚拟化都是这样
+
+关闭numa之后跑分回到15w+
+
+而且在wsl相关性设置中，cpu 组1 变成了64个cpu，组2只有8个？？？？
+原本是平均分配的
+
+
+wtf？？？
 
 
 ## zbook17 changing to DC screen 换屏幕
@@ -129,6 +152,12 @@ bcdedit /set hypervisorlaunchtype off
 ### 双路主机：
 
 可以任务管理器右键vmmm选择让wsl运行在哪个cpu上面
+
+新发现：当关闭超线程之后，wsl可以同时在两个cpu中运行
+
+注意可能需要重新安装libintel64？
+
+性能测试
 
 ### root 权限
 
@@ -338,6 +367,20 @@ CUDA在makefile include里面要改
 ### vasp other
 
 vasp6.1的GPU编译，新坑：https://zhuanlan.zhihu.com/p/302826820
+
+## vasp常用命令
+
+ulimit别忘了
+
+### stopcar
+
+stopcar 可以让计算在中途停止，只需要新建STOPCAR 文件 输入以下内容
+
+```markdown
+LSTOP = .True.
+LABORT = .True.
+
+```
 
 
 ```markdown

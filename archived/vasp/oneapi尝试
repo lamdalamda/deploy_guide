@@ -1,0 +1,6 @@
+需要分别安装base和hpc Toolkit
+wget https://registrationcenter-download.intel.com/akdlm/irc_nas/17977/l_BaseKit_p_2021.3.0.3219_offline.sh
+wget https://registrationcenter-download.intel.com/akdlm/irc_nas/17764/l_HPCKit_p_2021.2.0.2997_offline.sh 
+
+之后sh安装
+oneapi的fftw3xf位置在opt\intel\oneapi\mkl\2021.3.0\interfaces\fftw3xf\ 直接打开之后make libintel64就行

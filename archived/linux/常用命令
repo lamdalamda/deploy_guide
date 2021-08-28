@@ -1,0 +1,7 @@
+su：最常用命令，直接拿到管理员权限，用这个就行
+
+sh：安装.sh文件
+
+yum install: centos要用yum来安装东西
+
+打不开的时候：netsh winsock reset

@@ -1,0 +1,18 @@
+tensorflow
+假设tensorflow安装在D:\Anaconda3\Lib\site-packages\tensorflow环境里，那么打开D:\Anaconda3\Lib\site-packages\tensorflow\python\platform\build_info.py这个文件
+
+检查一下默认写好的系统变量CUDA_PATH和CUDA_PATH_V9.0是否无误
+这里写图片描述
+检查一下系统变量path中是否有NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin和NVIDIA GPU Computing Toolkit\CUDA\v9.0\lib\x64并且正确。
+默认路径如下：
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\lib\x64
+直接pip install tensorflow就行，有错误改错误
+
+tensorflow-cuda：需要找到tensorflow对应的cuda，cudnn
+
+下载下来之后安装，放在环境变量里面，缺什么加什么
+官网版本未必对应，可以看安装后缺少的dll版本
+
+import tensorflow as tf
+tf.config.list_physical_devices('GPU')

@@ -377,10 +377,34 @@ ulimit别忘了
 stopcar 可以让计算在中途停止，只需要新建STOPCAR 文件 输入以下内容
 
 ```markdown
-LSTOP = .True.
-LABORT = .True.
+LSTOP = True
 
 ```
+
+不知道跟这个有什么区别
+`LABORT = .True.`
+
+# git
+
+对于新的os需要对git以及github进行设置
+
+`git config --global user.name "lamdalamda"`
+
+`git config --global user.email "邮箱"`
+
+之后可以进行正常使用
+
+## github
+
+对于需要pull 或者 push 到github的
+在点击pull或者push时候github扩展会跳出来打开chrome要求验证
+
+# vscode
+## markdown输出公式
+安装“ Markdown Preview Enhance ”，如果需要用到数学公式的话，安装“ Markdown+Math ”。
+参考https://blog.csdn.net/weijifen000/article/details/84257434
+
+## latex
 
 
 ```markdown

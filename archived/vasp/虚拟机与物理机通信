@@ -1,0 +1,5 @@
+/usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
+
+#可以另存为.sh文件每次开机之后要管理员运行
+
+#失败的话可能需要安装vmhgfs之类的？

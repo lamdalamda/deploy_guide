@@ -1,0 +1,16 @@
+安装直接前往 github 对应项目的 release 中下载最新版本即可，需注意 sshfs-win 对 winfsp 的最低版本依赖（下载最新版本一般即可满足），另外有GUI（用户图形操作界面）可供下载，建议下载。
+
+sshfs-win：https://github.com/billziss-gh/sshfs-win/releases
+winfsp：https://github.com/billziss-gh/winfsp/releases
+
+然后映射网络磁盘里面输入
+
+\\sshfs\用户名@服务器名字\ 
+
+后面不用加\home啥的，过去就相当于在\home\用户名底下
+
+如果想要上层的话也可以
+
+\\sshfs.r\用户名@服务器名字\home\用户名\.......
+
+sshfs相当于省略\home\用户名的过程

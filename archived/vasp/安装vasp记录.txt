@@ -1,0 +1,73 @@
+虚拟机 vmware workstation 下载自cmu/computing
+centos8 官网下载最新版
+
+虚拟机所有目录全都在非系统盘防止存储爆炸
+安装完成之后，虚拟机设置，将实体机目录共享给虚拟机，无法显示的时候在虚拟机上面运行/usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
+挂载实体系统硬盘在mnt下面
+
+记得sudo
+
+如果vmhgfs-fuse没有，可以用 sudo yum install <文件名>
+
+安装intel的： 直接 sudo sh 文件名
+安装界面用上下左右空格回车
+
+记得base和hpc都要安装
+安装之后按ifort看能否运行
+
+手动配置etc/enviroment: PATH="/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:Intel的位置即opt/intel/oneapi/compiler/2021.1.1/linux/bin/intel64"
+之后sudo icc和sudo ifort看能不能用
+
+之后找到fftw3xf编译sudo make libintel64
+
+输入su直接升成root权限然后make libintel64也行
+
+之后找到vasp makeall
+
+还要安装g++用 yum install gcc-c++ 命令
+
+每次缺东西，就在intel安装目录下找，然后把东西添加到etc/enviroment 
+
+
+放弃
+
+--------------------------------------------
+
+
+重新来：用centos8.0,下载网上intel parallel studio xe 2019 (好像不是update版本)（百度找的）
+
+
+
+按照bilibili来，只安装了gcc-c++
+】libintel64没问题
+
+测试通过，vasp成功
+
+wsl
+
+/usr/include/c++/4.4.6/x86_64-redhat-linux丢失。
+
+我做了以下事情：
+
+cd /usr/include/c++/4.4.6/
+mkdir x86_64-redhat-linux
+cd x86_64-redhat-linux
+ln -s ../i686-redhat-linux 32
+
+像这样创建正确的符号链接（不确定f的名称x86_64-redhat-linux）：
+
+cd /usr/include/c++/8
+ln -s i686-redhat-linux x86_64-redhat-linux
+或者
+
+cd /usr/include/c++/8
+ln -s i686-redhat-linux/bits
+但是我希望不会给混合32b / 64b带来错误的定义，在...之后进行一些测试...
+
+
+不行
+
+发现没有32位数据库所以按照网上
+
+
+再安装intel parallel studio时候暂时没有报错说缺少32位库

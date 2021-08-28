@@ -1,0 +1,35 @@
+GUI-xfce
+https://zhuanlan.zhihu.com/p/150555651
+RDP:
+https://zhuanlan.zhihu.com/p/149501381
+显示GUI
+
+返回主页
+Hello World!
+博客园首页管理随笔 - 108  文章 - 0  评论 - 1  阅读 - 19万
+[Linux] 为 WSL 添加GUI图形界面 - VcXsrv
+#1. 在 Win10 的 Microsoft Store 中安装了 ubuntu18.04，更换为国内源。
+
+#2. 在 WSL 中安装 xfce4 桌面环境
+
+$ sudo apt-get install xfce4
+#3. 配置 .bashrc  
+
+$ cd ~
+$ nano .bashrc
+在最后一行添加
+
+export DISPLAY=:0.0
+#4. 下载并安装 VcXsrv Windows X Server
+
+https://sourceforge.net/projects/vcxsrv/
+
+Windows X-server based on the xorg git sources (like xming or cygwin's xwin), but compiled with Visual C++ 2012 Express Edition. Source code can also be compiled with VS2008, VS2008 Express Edition and VS2010 Express Edition, although current project and makefile are not fully compatible anymore.
+
+#5. 先启动 XLaunch
+
+#6. 再在 WSL 中启动 Xfce 会话
+
+$ startxfce4
+预览
+

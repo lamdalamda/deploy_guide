@@ -1,0 +1,5 @@
+#配置windows 的初始环境
+
+
+conda create -n research python
+conda activate 

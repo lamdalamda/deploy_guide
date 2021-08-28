@@ -1,0 +1,79 @@
+v1研究中
+
+网上第一个教程不好用
+
+但反正需要改dhcp
+
+在主机使用ssh-key-gen 生成一对密钥
+
+v2：
+
+尝试固定ip：
+虚拟机的网络配置器里面vnet8中选NAT模式，勾选了将主机虚拟适配器连接至此网络，没有选使用本机DHCP服务分配地址
+子网地址192.168.112.0 子网掩码255.255.255.0网关192.168.112.2
+
+centos中设置：ipv4手动
+地址192.168.112.3 子网掩码 网关 照着填 DNS不知道填啥，选自动可以运行，相互可以ping通
+
+在vscode远程资源管理器里面，新建一个连接，如下配置：
+Host 192.168.112.3
+  HostName 192.168.112.3
+  User dx
+  ForwardAgent yes
+
+可以打通，需要每次输入密码
+之后又不行了
+
+v3
+再次重试
+全部重置之后配置好网络地址，可以相互ping通
+重启之后又不行
+
+再次一顿操作，新的网络：
+网关192.18.254.2，ip192.168.254.0，开启dhcp，设定起始ip为192.168.254.128终止为129
+
+发现了，有时候重启之后vmnet8的服务器地址会乱变，如果乱变就改回正常值：ip地址192.168.254.1子网掩码255.255.255.0
+再次ping可以正常ping通
+
+关于获得root权限：直接连接root@192.168.254.128就可以了
+
+又找了一个教程：https://fancyseeker.github.io/2013/12/31/ssh_connect/ 按照说明一步步来成功：
+
+具体过程：
+
+设定开机启动：chkconfig sshd on
+
+vscode root登录linux之后，找到 /etc/ssh/
+
+ssh_config中末尾添加
+
+# 使用RSA算法进行安全验证
+RSAAuthentication yes
+# 关闭密码验证
+PasswordAuthentication no
+# 强制使用的SSH2
+Protocol 2
+
+sshd不需要改
+
+之后 ssh-keygen -t rsa 生成密钥对，之后再~/.ssh里面看到密钥对
+
+在linux上面运行：
+
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+
+之后把id_rsa的内容（不是id_rsa.pub）复制到windows里面（例如C:\Users\David\.ssh）
+
+改远程连接的config为
+
+# Read more about SSH config files: https://linux.die.net/man/5/ssh_config
+
+Host 192.168.254.128
+    HostName 192.168.254.128
+    User root
+    IdentityFile "C:\Users\David\.ssh\id_rsa"
+
+成功免密码登录
+
+new:tar
+可以使用ssh-add （即ssh agent）添加私钥，免登录

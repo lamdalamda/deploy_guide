@@ -1,0 +1,63 @@
+27737 要求安装bingo
+首先，从官网下载cmake.sh
+之后sh安装cmake.sh之后向.bashrc里面添加环境变量
+
+环境变量参考:
+
+source /opt/intel/parallel_studio_xe_2019/psxevars.sh#这个是因为之前安装过parallel studio2019
+export PATH=$PATH:/home/dx/work/vaspcode/vasp.5.4.4/bin:/home/dx/work/cmake-3.19.4-Linux-x86_64/bin#这个里面是安装过vasp之后的
+#注意path是需要用逗号隔开的
+
+之后git clone --recurse-submodules https://github.com/nasa/bingo.github
+一定要记住有 --recurse-submodules要不然会报错
+
+尝试在windows之下运行，但是会报错，显示没有c和c++的编译器
+
+然后在bingo之下
+
+cd bingocpp
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make
+
+make bingocpp#这时候报错了
+
+解决方式：yum install python3-devel
+
+重新运行bingocpp成功
+
+再之后：
+
+make gtest
+#全部运行通过
+
+然后安装python requirement，requirements.txt在bingo目录，即../../
+
+安装使用pip install -r requirements.txt
+
+报错  collect2: error: ld returned 1 exit status
+  failure.
+  removing: _configtest.c _configtest.o
+  error: Cannot link MPI programs. Check your configuration!!!
+  ----------------------------------------
+  ERROR: Failed building wheel for mpi4py
+
+网上说是需要openmpi
+下载解压之后，运行CC=icc CXX=icpc FC=ifort ./configure --prefix=/opt/openmpi-4.1.0/built
+这个prefix不知道干啥的，很复杂，放弃
+
+重新看了一下，安装了libfabric，也可能是类似名字
+yum install libfabric
+
+重新安装，会卡死一会，但是成功了
+
+注意，bingo只有在目前工作目录是bingo时候才能import成功
+
+circle——verification.py报错，重新设置：
+在/work/bingo/bingocpp里面找到了build.sh，用sh build.sh重新安装
+
+circle——verification运行成功
+
+但是就是要放在bingo目录下面，否则运行失败
+

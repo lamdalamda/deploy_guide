@@ -1,0 +1,9 @@
+Windows ssh 到 linux：
+
+首先在service服务中，打开openssh，自动启动
+
+ssh-keygen -t rsa 随便起个名字
+
+生成的pub放到linux机器的/.ssh下面，再把内容复制到./.ssh/authorized_keys里面
+
+之后windows机器ssh-add 私钥名字

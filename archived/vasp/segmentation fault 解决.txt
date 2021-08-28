@@ -1,0 +1,5 @@
+ulimit -s 262140 
+或者更大的数
+
+或者更大的数
+ulimit -u unlimited

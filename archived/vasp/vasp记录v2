@@ -1,0 +1,85 @@
+准备intel parallel studio xe 2019 和license文件 （*.lic）
+
+对于centos，不需要再装什么
+对于wsl2 ubuntu1804 
+
+apt-get install build-essential gcc-multilib rpm ia32-libs
+
+
+#update：
+apt-get install build-essential gcc-multilib rpm lib32ncurses5 lib32z1
+
+ia32-lib会提示已经没了，提示跳转到了另外的库里面，就装上   lib32ncurses5 lib32z1
+
+看起来lib32ncurses5 lib32z1是最重要的
+而且lib32ncurses5在2004上装不上去？
+
+
+另外还有教程照着装了sudo apt-get install libgtk-3-0 libxss1 libnss3 libgtk2.0 libpango-1.0-0 libasound2 ，估计其实不需要？
+
+注意报错！！！！！！！
+
+不知道里面具体哪个东西是决定性的
+但是一定要parallel studio不报什么错
+
+安装完了之后root/.bashrc 加上：
+source /opt/intel/parallel_studio_xe_2019/psxevars.sh
+
+再然后cd /opt/intel/compilers_and_libraries_2019.0.117/linux/mkl/interfaces/fftw3xf/
+并且make libintel64
+
+vasp:tar -xzf
+
+在arch里面找.linux_intel，复制出来并删除这个后缀
+然后改：OFLAG      = -O2 -xhost
+
+成功！
+
+然后改bin/vasp_std为vasp（方便
+
+ubuntu2004不行，不知道是版本转换原因还是什么
+
+
+ ubuntu1804.exe config --default-user root 
+
+
+
+尝试CUDA
+
+Please make sure that
+ -   PATH includes /usr/local/cuda-11.0/bin
+ -   LD_LIBRARY_PATH includes /usr/local/cuda-11.0/lib64, or, add /usr/local/cuda-11.0/lib64 to /etc/ld.so.conf and run ldconfig as root
+
+To uninstall the CUDA Toolkit, run cuda-uninstaller in /usr/local/cuda-11.0/bin
+
+
+CUDA在makefile include里面要改
+GENCODE_ARCH    := -gencode=arch=compute_52,code=\"sm_52,compute_52\" 
+
+报错icc: command line error: option '-openmp' is not supported. Please use the replacement option '-qopenmp'
+
+解决后
+再报错找不到mpi.h
+尝试吧makefile.include中改成
+MPI_INC    = $(I_MPI_ROOT)/intel64/include
+
+
+也可以尝试sudo apt install libopenmpi-dev，但还没试
+
+mpiifort -mkl=sequential -lstdc++ -o vasp c2f_interface.o cuda_interface.o base.o base_gpu.o profiling.o openmp.o mpi_gpu.o smart_allocate.o xml.o constant.o jacobi.o main_mpi.o scala.o asa.o lattice.o poscar.o ini.o mgrid.o xclib.o vdw_nl.o xclib_grad_gpu.o radial.o pseudo.o gridq.o ebs.o mkpoints.o wave_gpu.o wave_mpi_gpu.o wave_high_gpu.o bext.o spinsym.o symlib.o symmetry.o lattlib.o random.o nonl.o nonlr_gpu.o nonl_high.o nonl_high_gpu.o dfast.o dfast_gpu.o choleski2_gpu.o mix.o hamil.o hamil_gpu.o xcgrad_gpu.o xcspin.o potex1.o potex2.o constrmag.o cl_shift.o relativistic.o LDApU.o paw_base.o metagga.o egrad.o pawsym.o pawfock.o pawlhf.o rhfatm.o hyperfine.o paw.o mkpoints_full.o charge.o charge_gpu.o Lebedev-Laikov.o stockholder.o dipol.o solvation.o pot.o pot_gpu.o dos.o elf.o tet.o tetweight.o hamil_rot.o chain.o dyna.o k-proj.o sphpro.o us.o core_rel.o aedens.o wavpre.o wavpre_noio_gpu.o broyden.o dynbr.o reader.o writer.o tutor.o xml_writer.o brent.o stufak.o fileio.o opergrid.o stepver.o chgloc.o fast_aug.o fock_multipole.o fock_gpu.o mkpoints_change.o subrot_cluster.o sym_grad.o mymath.o npt_dynamics.o subdftd3.o internals.o dynconstr.o dimer_heyden.o dvvtrajectory.o vdwforcefield.o hamil_high.o nmr.o pead.o subrot_gpu.o subrot_scf.o paircorrection.o rpa_force.o force.o pwlhf.o gw_model.o optreal.o steep.o rmm-diis_gpu.o davidson_gpu.o david_inner.o lcao_bare.o locproj.o electron_gpu.o rot.o electron_all.o shm.o pardens.o optics.o constr_cell_relax.o stm.o finite_diff.o elpol.o hamil_lr.o rmm-diis_lr.o subrot_lr.o lr_helper.o hamil_lrf.o elinear_response.o ilinear_response.o linear_optics.o setlocalpp.o wannier.o electron_OEP.o electron_lhf.o twoelectron4o.o gauss_quad.o m_unirnk.o varpro.o minimax.o mlwf.o wnpr.o ratpol.o pade_fit.o screened_2e.o wave_cacher.o crpa.o chi_base.o wpot.o local_field.o ump2.o ump2kpar.o fcidump.o ump2no.o bse_te.o bse.o acfdt.o main_gpu.o chi.o sydmat.o rmm-diis_mlr.o linear_response_NMR.o wannier_interpol.o linear_response.o dmft.o auger.o dmatrix.o elphon.o fftmpiw.o fftmpi_map.o fft3dlib.o fftw3d_gpu.o fftmpiw_gpu.o main.o  -Llib -ldmy /opt/intel/compilers_and_libraries_2019.0.117/linux/mkl/lib/intel64/libmkl_scalapack_lp64.a -lmkl_blacs_intelmpi_lp64 -Lparser -lparser -lstdc++ CUDA/lib/libCudaUtils_x86_64.a -L/usr/local/cuda//lib64 -lnvToolsExt -lcudart -lcuda -lcufft -lcublas 
+ld: cannot find -lcuda
+makefile:145: recipe for target 'vasp' failed
+make[2]: *** [vasp] Error 1
+make[2]: Leaving directory '/home/dx/vasp.5.4.4/build/gpu'
+cp: cannot stat 'vasp': No such file or directory
+makefile:142: recipe for target 'all' failed
+make[1]: *** [all] Error 1
+make[1]: Leaving directory '/home/dx/vasp.5.4.4/build/gpu'
+makefile:10: recipe for target 'gpu' failed
+make: *** [gpu] Error 2
+root@Zbook17:/home/dx/vasp.5.4.4# make vasp
+make: *** No rule to make target 'vasp'.  Stop.
+
+查看了一下，cuda root 指向CUDA_ROOT  ?= /usr/local/cuda/，这个cuda指向了\\wsl\Ubuntu-18.04\usr\local\cuda-11.0\targets\x86_64-linux\lib，然后-lcuda不能运行是因为没有libcuda.so。 这个文件被放在了stub文件夹里，还有libnvidia-ml也被放了进去，所以复制了出来
+
+成功了！！！！！？？？？

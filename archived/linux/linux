@@ -1,0 +1,7 @@
+linux折腾录
+
+安装虚拟机，vmware workstationpro (参见安装vasp记录)
+
+初始环境配置：记得安装vs code，挺好用的
+
+安装vmhs-fuge还是啥的，为了虚拟机与实体机通信

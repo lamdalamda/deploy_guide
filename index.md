@@ -304,7 +304,7 @@ import tensorflow as tf
 tf.config.list_physical_devices('GPU')
 ```
 
-# build software 在linux中编译软件的问题
+# Softwares 软件问题
 
 ## vasp
 
@@ -384,7 +384,7 @@ LSTOP = True
 不知道跟这个有什么区别
 `LABORT = .True.`
 
-# git
+## git & github
 
 对于新的os需要对git以及github进行设置
 
@@ -397,33 +397,25 @@ LSTOP = True
 ## github
 
 对于需要pull 或者 push 到github的
-在点击pull或者push时候github扩展会跳出来打开chrome要求验证
+如果是在vscode里面打开在点击pull或者push时候github扩展会跳出来打开chrome要求验证
+也可以使用ssh登录，比较费劲
+## GitHub page
 
-# vscode
-## markdown输出公式
-安装“ Markdown Preview Enhance ”，如果需要用到数学公式的话，安装“ Markdown+Math ”。
-参考https://blog.csdn.net/weijifen000/article/details/84257434
+一般是在settings-page里面设定source在/docs 下面，然后建立docs文件夹，放进去index.html
 
-## latex
+如果用index.md使用markdown渲染出来，注意使用vscode插件markdown math和markdown preview enhanced
 
-
+渲染出来html的话，在GitHub page上面不能显示正确的数学公式，需要在在<head>部分把原本的stylesheet部分换成以下代码
 ```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 ```
+
+这段代码会更新
+
+_https://katex.org/docs/autorender.html_
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 

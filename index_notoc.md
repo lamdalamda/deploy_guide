@@ -1,57 +1,4 @@
-<a name="index">**Index**</a>
-&emsp;<a href="#0">System configuration record</a>  
-<a href="#1">Hardware 硬件</a>  
-&emsp;<a href="#2">e5 鸡血 @ z10pa</a>  
-&emsp;<a href="#3">系统监测：</a>  
-&emsp;<a href="#4">双路设置：</a>  
-&emsp;<a href="#5">zbook17 changing to DC screen 换屏幕</a>  
-&emsp;<a href="#6">nvme support</a>  
-<a href="#7">Driver 安装驱动的那些事</a>  
-&emsp;<a href="#8">install graphic card driver for unsupported graphic card 安装显卡驱动 zbook17</a>  
-&emsp;<a href="#9">killer ax200</a>  
-<a href="#10">windows system setting 系统设置</a>  
-&emsp;<a href="#11">开启远程桌面:</a>  
-&emsp;<a href="#12">windows照片查看器</a>  
-&emsp;<a href="#13">a script for running android simulator 安卓模拟器等可以尝试</a>  
-<a href="#14">windows to linux 远程操作linux </a>  
-&emsp;<a href="#15">虚拟机注意事项</a>  
-&emsp;&emsp;<a href="#16">vmware 使用的一些常用指令</a>  
-&emsp;<a href="#17">wsl的基本设置</a>  
-&emsp;&emsp;<a href="#18">双路主机：</a>  
-&emsp;&emsp;<a href="#19">root 权限</a>  
-&emsp;<a href="#20">linux GUI</a>  
-&emsp;<a href="#21">ssh通信</a>  
-&emsp;&emsp;<a href="#22">vscode config 文件示例</a>  
-&emsp;&emsp;<a href="#23">ssh免密码登录</a>  
-&emsp;&emsp;<a href="#24">映射ssh的磁盘</a>  
-<a href="#25">linux本身设置</a>  
-&emsp;<a href="#26">basic linux command：</a>  
-&emsp;<a href="#27">basic library</a>  
-&emsp;&emsp;<a href="#28">ubuntu 18.04:</a>  
-<a href="#29">python </a>  
-&emsp;<a href="#30">environment 环境相关</a>  
-&emsp;&emsp;<a href="#31">export the environment 导出环境:</a>  
-&emsp;&emsp;<a href="#32">import environment from yml file 导入环境:</a>  
-&emsp;&emsp;<a href="#33">a sample</a>  
-&emsp;<a href="#34">library 库</a>  
-&emsp;&emsp;<a href="#35">tensorflow:</a>  
-&emsp;&emsp;&emsp;<a href="#36">tensorflow windows </a>  
-&emsp;&emsp;&emsp;<a href="#37">test code for tensorflow tensorflow测试</a>  
-<a href="#38">Softwares 软件问题</a>  
-&emsp;<a href="#39">vasp</a>  
-&emsp;&emsp;<a href="#40">vasp build</a>  
-&emsp;&emsp;<a href="#41">vasp cuda</a>  
-&emsp;&emsp;<a href="#42">vasp bug</a>  
-&emsp;&emsp;<a href="#43">vasp other</a>  
-&emsp;&emsp;<a href="#44">vasp常用命令</a>  
-&emsp;&emsp;<a href="#45">stopcar</a>  
-<a href="#46">git & github</a>  
-&emsp;<a href="#47">github</a>  
-&emsp;<a href="#48">GitHub page</a>  
-&emsp;&emsp;<a href="#49">github page 目录</a>  
-&emsp;&emsp;<a href="#50">Jekyll Themes</a>  
-&emsp;&emsp;<a href="#51">Support or Contact</a>  
-## <a name="0">System configuration record</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## System configuration record
 
 **以下内容基本都是转载,如有侵权联系删除**
 
@@ -59,10 +6,10 @@
 
 
 
-# <a name="1">Hardware 硬件</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+# Hardware 硬件
 
 
-## <a name="2">e5 鸡血 @ z10pa</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## e5 鸡血 @ z10pa
 
 
 烧录器装好驱动https://item.taobao.com/item.htm?spm=a1z09.2.0.0.68162e8dApTxX1&id=592580392777&_u=n1ucmpp9f1e3
@@ -83,7 +30,7 @@
 
 再之后，格式化一个u盘，把  v3.efi 和 start.nsh放进去，引导这个优盘，让优盘把v3 efi相当于复制进系统的efi分区即可
 
-## <a name="3">系统监测：</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## 系统监测：
 
 千万不要用aida64，会导致功耗bug
 
@@ -91,7 +38,7 @@
 
 
 
-## <a name="4">双路设置：</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## 双路设置：
 
 只在1路插内存：即32g内存都在cpu1上面，cpuz跑分15w+
 
@@ -108,7 +55,7 @@
 wtf？？？
 
 
-## <a name="5">zbook17 changing to DC screen 换屏幕</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## zbook17 changing to DC screen 换屏幕
 
 https://forum.51nb.com/thread-1966563-1-1.html
 
@@ -116,7 +63,7 @@ https://forum.51nb.com/thread-1966563-1-1.html
 
 目前已有是40针屏线，具有2lane定义，查看b173han04.0 和04.7似乎符合 40pin 2lane 
 
-## <a name="6">nvme support</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## nvme support
 
 参照https://tieba.baidu.com/p/6282527282?see_lz=1
 过程，使用clover来进行
@@ -128,9 +75,9 @@ bios设置：
 方法，对于目前的GPT硬盘，直接把EFI分区清空之后把200M的clover盘中文件全考进去，重启之后bios可以识别这个uefi并且引导出来就是clover
 
 
-# <a name="7">Driver 安装驱动的那些事</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+# Driver 安装驱动的那些事
 
-## <a name="8">install graphic card driver for unsupported graphic card 安装显卡驱动 zbook17</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## install graphic card driver for unsupported graphic card 安装显卡驱动 zbook17
 
 zbook17显卡：
 根据网上，只支持到p5200?
@@ -146,17 +93,17 @@ inf更改：
 首先设备管理器找到显卡硬件id，然后再nVidia驱动解压出来的文件里面 找惠普对应的（103C结尾，应该是bli之类的inf）
 禁用设备签名（设置里面，恢复，高级重新启动），然后inf右键安装
 
-## <a name="9">killer ax200</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## killer ax200
 
 https://bbs.luobotou.org/thread-45955-1-1.html11
 
-# <a name="10">windows system setting 系统设置</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+# windows system setting 系统设置
 
-## <a name="11">开启远程桌面:</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## 开启远程桌面:
 
 文件资源管理器,右键此电脑,跳出来设置的窗口,在相关设置里面有远程桌面,点进去打开
 
-## <a name="12">windows照片查看器</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## windows照片查看器
 
 保存成reg文件双击运行
 
@@ -175,7 +122,7 @@ Windows Registry Editor Version 5.00
  ".wdp"="PhotoViewer.FileAssoc.Tiff"
 ```
 
-## <a name="13">a script for running android simulator 安卓模拟器等可以尝试</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## a script for running android simulator 安卓模拟器等可以尝试
 
 启用：
 ```markdown
@@ -189,22 +136,22 @@ bcdedit /set hypervisorlaunchtype off
 bcdedit /set hypervisorlaunchtype off
 ```
 
-# <a name="14">windows to linux 远程操作linux </a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+# windows to linux 远程操作linux 
 
-## <a name="15">虚拟机注意事项</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## 虚拟机注意事项
 
 安装vmhs-fuge还是啥的，为了虚拟机与实体机通信
 
 虚拟机可以尝试使用固定ip
 
-### <a name="16">vmware 使用的一些常用指令</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### vmware 使用的一些常用指令
 `/usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other`
 
 
 
-## <a name="17">wsl的基本设置</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## wsl的基本设置
 
-### <a name="18">双路主机：</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### 双路主机：
 
 可以任务管理器右键vmmm选择让wsl运行在哪个cpu上面
 
@@ -214,13 +161,13 @@ bcdedit /set hypervisorlaunchtype off
 
 性能测试
 
-### <a name="19">root 权限</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### root 权限
 
  `ubuntu1804.exe config --default-user root` 
 
 打不开的时候：netsh winsock reset
 
-## <a name="20">linux GUI</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## linux GUI
 GUI-xfce
 https://zhuanlan.zhihu.com/p/150555651
 RDP:
@@ -248,9 +195,9 @@ Windows X-server based on the xorg git sources (like xming or cygwin's xwin), bu
 
 `startxfce4`
 
-## <a name="21">ssh通信</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## ssh通信
 
-### <a name="22">vscode config 文件示例</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### vscode config 文件示例
 
 ```markdown
 
@@ -262,7 +209,7 @@ Host 192.168.254.128
 ```
 
 
-### <a name="23">ssh免密码登录</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### ssh免密码登录
 
 Windows ssh 到 linux：
 
@@ -274,7 +221,7 @@ ssh-keygen -t rsa (随便起个名字)
 
 之后windows机器ssh-add 私钥名字
 
-### <a name="24">映射ssh的磁盘</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### 映射ssh的磁盘
 
 安装直接前往 github 对应项目的 release 中下载最新版本即可，需注意 sshfs-win 对 winfsp 的最低版本依赖（下载最新版本一般即可满足），另外有GUI（用户图形操作界面）可供下载
 
@@ -295,11 +242,11 @@ sshfs相当于省略\home\用户名的过程
 
 
 
-# <a name="25">linux本身设置</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+# linux本身设置
 
 最好用centos或者ubuntu18.04
 
-## <a name="26">basic linux command：</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## basic linux command：
 
 su / sudo ：管理员权限
 
@@ -307,34 +254,34 @@ sh xxxxx.sh :运行sh脚本
 
 yum install / apt-get install : centos 和 ubuntu安装软件
 
-## <a name="27">basic library</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## basic library
 
-### <a name="28">ubuntu 18.04:</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### ubuntu 18.04:
 
 `apt-get install build-essential gcc-multilib rpm lib32ncurses5 lib32z1`
 
-# <a name="29">python </a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+# python 
 
 先装好anaconda
 
-## <a name="30">environment 环境相关</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## environment 环境相关
 
-### <a name="31">export the environment 导出环境:</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### export the environment 导出环境:
 
 `conda env export --name research > research.yml`
 
 
-### <a name="32">import environment from yml file 导入环境:</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### import environment from yml file 导入环境:
 
 `conda env create -f environment.yml`
 
-### <a name="33">a sample</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### a sample
 
 https://github.com/lamdalamda/system-configure-record/blob/master/CARE/research.yml
 
-## <a name="34">library 库</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
-### <a name="35">tensorflow:</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
-#### <a name="36">tensorflow windows </a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## library 库
+### tensorflow:
+#### tensorflow windows 
 假设tensorflow安装在D:\Anaconda3\Lib\site-packages\tensorflow环境里，那么打开D:\Anaconda3\Lib\site-packages\tensorflow\python\platform\build_info.py这个文件
 
 检查一下默认写好的系统变量CUDA_PATH和CUDA_PATH_V9.0是否无误
@@ -352,16 +299,16 @@ tensorflow-cuda：需要找到tensorflow对应的cuda，cudnn
 下载下来之后安装，放在环境变量里面，缺什么加什么
 官网版本未必对应，可以看安装后缺少的dll版本
 
-#### <a name="37">test code for tensorflow tensorflow测试</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+#### test code for tensorflow tensorflow测试
 
 ```markdown
 import tensorflow as tf
 tf.config.list_physical_devices('GPU')
 ```
 
-# <a name="38">Softwares 软件问题</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+# Softwares 软件问题
 
-## <a name="39">vasp</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## vasp
 
 首先：安装intel oneapi
 
@@ -384,14 +331,14 @@ sh 运行下载好的包，安装oneapi
 `cd /opt/intel/oneapi/mkl/2021.3.0/interfaces/fftw3xf/ `
 `make libintel64`
 
-### <a name="40">vasp build</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### vasp build
 
 `OFLAG      = -O2 -xhost`
 参考bilibili
 
 `export PATH=$PATH:/root/repo/vasp.5.4.4/bin`
 
-### <a name="41">vasp cuda</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### vasp cuda
 
 CUDA在makefile include里面要改
 `GENCODE_ARCH    := -gencode=arch=compute_52,code=\"sm_52,compute_52\"` 
@@ -411,7 +358,7 @@ CUDA在makefile include里面要改
 
 总之找不到什么文件就搜索一下然后指一下路径
 
-### <a name="42">vasp bug</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### vasp bug
 
 **segmentation fault**
 
@@ -419,15 +366,15 @@ CUDA在makefile include里面要改
 
 至少需要incar poscar potcar kpoints才能运行
 
-### <a name="43">vasp other</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### vasp other
 
 vasp6.1的GPU编译，新坑：https://zhuanlan.zhihu.com/p/302826820
 
-### <a name="44">vasp常用命令</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### vasp常用命令
 
 ulimit别忘了
 
-### <a name="45">stopcar</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### stopcar
 
 stopcar 可以让计算在中途停止，只需要新建STOPCAR 文件 输入以下内容
 
@@ -439,7 +386,7 @@ LSTOP = True
 不知道跟这个有什么区别
 `LABORT = .True.`
 
-# <a name="46">git & github</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+# git & github
 
 对于新的os需要对git以及github进行设置
 
@@ -449,12 +396,12 @@ LSTOP = True
 
 之后可以进行正常使用
 
-## <a name="47">github</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## github
 
 对于需要pull 或者 push 到github的
 如果是在vscode里面打开在点击pull或者push时候github扩展会跳出来打开chrome要求验证
 也可以使用ssh登录，比较费劲
-## <a name="48">GitHub page</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+## GitHub page
 
 一般是在settings-page里面设定source在/docs 下面，然后建立docs文件夹，放进去index.html
 
@@ -473,16 +420,16 @@ LSTOP = True
 _https://katex.org/docs/autorender.html_
 
 
-### <a name="49">github page 目录</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### github page 目录
 
 使用toc.py 搬运自https://github.com/Higurashi-kagome/pythontools/blob/master/text/toc.py
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### <a name="50">Jekyll Themes</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### Jekyll Themes
 
 Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/lamdalamda/deploy_guide/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### <a name="51">Support or Contact</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.

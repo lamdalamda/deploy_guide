@@ -167,6 +167,11 @@ bcdedit /set hypervisorlaunchtype off
 
 打不开的时候：netsh winsock reset
 
+### 重启wsl
+
+`net stop LxssManager`
+`net start LxssManager`
+
 ## linux GUI
 GUI-xfce
 https://zhuanlan.zhihu.com/p/150555651
@@ -254,6 +259,16 @@ sh xxxxx.sh :运行sh脚本
 
 yum install / apt-get install : centos 和 ubuntu安装软件
 
+`top`
+查看cpu使用率
+
+`top -u david`
+查看用户的cpu使用率
+
+
+`cat /proc/cpuinfo`
+查看cpu型号核心数量
+
 ## basic library
 
 ### ubuntu 18.04:
@@ -265,6 +280,10 @@ yum install / apt-get install : centos 和 ubuntu安装软件
 先装好anaconda
 
 ## environment 环境相关
+
+### 默认环境
+在bashrc里添加
+`conda activate environment name`
 
 ### export the environment 导出环境:
 
@@ -305,6 +324,14 @@ tensorflow-cuda：需要找到tensorflow对应的cuda，cudnn
 import tensorflow as tf
 tf.config.list_physical_devices('GPU')
 ```
+
+## 实例
+
+### 监控网站信息变化，比如托福或者疫苗等
+
+同时具有发送邮件提醒功能
+
+https://www.jianshu.com/p/7c4f251485b7?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
 
 # Softwares 软件问题
 
@@ -386,7 +413,7 @@ LSTOP = True
 不知道跟这个有什么区别
 `LABORT = .True.`
 
-# git & github
+## git & github
 
 对于新的os需要对git以及github进行设置
 
@@ -394,14 +421,26 @@ LSTOP = True
 
 `git config --global user.email "邮箱"`
 
+### github ssh
+
+`ssh-keygen -t ed25519 -C "email address"`
+
+`ssh-add ~/.ssh/id_ed25519`
+
+再把pubkey复制到GitHub 设置里面的ssh keys里
+
 之后可以进行正常使用
 
-## github
+### github clone
 
 对于需要pull 或者 push 到github的
 如果是在vscode里面打开在点击pull或者push时候github扩展会跳出来打开chrome要求验证
 也可以使用ssh登录，比较费劲
-## GitHub page
+
+命令示例：
+`git clone git@github.com:lamdalamda/deploy_guide.git`
+
+### GitHub page
 
 一般是在settings-page里面设定source在/docs 下面，然后建立docs文件夹，放进去index.html
 
@@ -420,16 +459,106 @@ LSTOP = True
 _https://katex.org/docs/autorender.html_
 
 
+
 ### github page 目录
 
 使用toc.py 搬运自https://github.com/Higurashi-kagome/pythontools/blob/master/text/toc.py
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+## latex 配置
+### latex中文支持
+参考https://zhuanlan.zhihu.com/p/43133114
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/lamdalamda/deploy_guide/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+对于latex workshop插件，在visual studio code的settings.json 里面添加如下内容
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+```markdown
+    // Latex workshop
+    "latex-workshop.latex.tools": [
+          {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "-pdf",
+            "%DOC%"
+            ]
+          },
+          {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "%DOC%"
+              ]
+          },          
+          {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "%DOC%"
+            ]
+          },
+          {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+            "%DOCFILE%"
+            ]
+          }
+        ],
+    "latex-workshop.latex.recipes": [
+          {
+            "name": "xelatex",
+            "tools": [
+            "xelatex"
+                        ]
+                  },
+          {
+            "name": "latexmk",
+            "tools": [
+            "latexmk"
+                        ]
+          },
+
+          {
+            "name": "pdflatex -> bibtex -> pdflatex*2",
+            "tools": [
+            "pdflatex",
+            "bibtex",
+            "pdflatex",
+            "pdflatex"
+                        ]
+          }
+        ],
+    "latex-workshop.view.pdf.viewer": "tab",  
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk"
+      ]
+```

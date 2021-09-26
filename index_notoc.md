@@ -75,6 +75,15 @@ bios设置：
 方法，对于目前的GPT硬盘，直接把EFI分区清空之后把200M的clover盘中文件全考进去，重启之后bios可以识别这个uefi并且引导出来就是clover
 
 
+## 苹果
+
+### 账户无法使用
+
+绑定银行卡之后再itunes里面激活
+
+### 其他一些问题
+m1的yml和其他yml不太通用
+
 # Driver 安装驱动的那些事
 
 ## install graphic card driver for unsupported graphic card 安装显卡驱动 zbook17
@@ -562,3 +571,13 @@ For more details see [GitHub Flavored Markdown](https://guides.github.com/featur
         "*.fdb_latexmk"
       ]
 ```
+
+#看番
+
+https://github.com/zaxtyson/AnimeSearcher
+
+可以git下来源代码使用
+
+## 搜索不到东西等问题
+
+git下来源代码，config里面更改一下端口之后，python运行app.py,之后记得在打开html之后在最底下更改app.py中的地址

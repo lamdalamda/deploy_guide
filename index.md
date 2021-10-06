@@ -25,7 +25,7 @@
 &emsp;&emsp;<a href="#23">重启wsl</a>  
 &emsp;<a href="#24">linux GUI</a>  
 &emsp;<a href="#25">ssh通信</a>  
-&emsp;&emsp;<a href="#26">vscode config 文件示例</a>  
+&emsp;&emsp;<a href="#26"> config 文件示例</a>  
 &emsp;&emsp;<a href="#27">ssh免密码登录</a>  
 &emsp;&emsp;<a href="#28">映射ssh的磁盘</a>  
 <a href="#29">linux本身设置</a>  
@@ -273,7 +273,7 @@ Windows X-server based on the xorg git sources (like xming or cygwin's xwin), bu
 
 ## <a name="25">ssh通信</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
-### <a name="26">vscode config 文件示例</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
+### <a name="26"> config 文件示例</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
 ```markdown
 
@@ -287,16 +287,24 @@ Host 192.168.254.128
 
 ### <a name="27">ssh免密码登录</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
-Windows ssh 到 linux：
 
-首先在service服务中，打开openssh，自动启动
+(windows)首先在service服务中，打开openssh，自动启动
 
-ssh-keygen -t rsa (随便起个名字)
+ssh-keygen -t rsa -f ~/.ssh/(密钥名字)
+产生ssh密钥
 
 生成的pub放到linux机器的/.ssh下面，再把内容复制到./.ssh/authorized_keys里面
 
-之后windows机器ssh-add 私钥名字
+```
+scp ~/.ssh/(密钥名字) (用户名)@(远程主机):~/.ssh/
 
+ssh登录远程主机之后
+
+cat ~/.ssh/(密钥名字) >> ~/.ssh/authorized_keys
+```
+
+之后windows机器ssh-add 私钥名字,或者在。ssh的config里面写好
+注意authorized keys里面每个主机只能有一个密钥
 ### <a name="28">映射ssh的磁盘</a><a style="float:right;text-decoration:none;" href="#index">[Top]</a>
 
 安装直接前往 github 对应项目的 release 中下载最新版本即可，需注意 sshfs-win 对 winfsp 的最低版本依赖（下载最新版本一般即可满足），另外有GUI（用户图形操作界面）可供下载
@@ -329,6 +337,12 @@ su / sudo ：管理员权限
 sh xxxxx.sh :运行sh脚本
 
 yum install / apt-get install : centos 和 ubuntu安装软件
+
+scp （-r） 本地 目标： 可以复制到远程主机
+
+注意！ 远程主机的.bashrc不可以有echo
+
+pwd显示路径
 
 `top`
 查看cpu使用率

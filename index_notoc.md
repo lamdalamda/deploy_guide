@@ -357,6 +357,18 @@ tf.config.list_physical_devices('GPU')
 https://www.jianshu.com/p/7c4f251485b7?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
 
 # Softwares 软件问题
+## PBS/qsub 队列
+
+安装PBS 队列管理；
+
+git clone git@github.com:openpbs/openpbs.git
+
+按照install操作
+configure之前conda deactivate
+./configure CC=icc 
+
+
+
 
 ## vasp
 
